@@ -6,12 +6,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Christopher Foo | Resume</title>
+  <meta name="description" content="Resume and portfolio of Christopher Foo.">
+
+  <!-- Apply the saved/system theme before paint to avoid a flash -->
+  <script>
+    (function () {
+      var t;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css"> <!-- Link to CSS -->
 </head>
 
 <!-- Body -->
 <body>
-  <h1>Christopher Foo</h1>
-  <script src="js/script.js"></script>  <!-- Link to js -->
+  <div id="progress" class="progress" aria-hidden="true"></div>
+  <div class="bg" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a href="#home" id="brand" class="brand">Christopher Foo</a>
+      <ul id="nav-links" class="nav-links"></ul>
+      <div class="nav-actions">
+        <button id="theme-btn" class="icon-btn" aria-label="Toggle colour theme">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button id="menu-btn" class="icon-btn menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main"></main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p id="footer-text"></p>
+      <a href="#home" class="text-link">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="js/content.js"></script>   <!-- Content -->
+  <script src="js/sections.js"></script>  <!-- Section -->
+  <script src="js/script.js"></script>    <!-- js -->
 </body>
 </html>
