@@ -1,2 +1,1 @@
-# resume-site
-Website resume for any usecase
+#Resume for any usecase regarding the person (Christoper Foo Chia Keith)
