@@ -1,0 +1,13 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+
+# Vercel local folder (If using vercel cli)
+.vercel
+
+# For future Node projects
+node_modules/
+.env
