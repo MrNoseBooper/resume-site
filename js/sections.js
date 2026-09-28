@@ -187,12 +187,6 @@ window.Sections = (() => {
 
     github(s) {
       const u = esc(s.username);
-      const badges = (s.achievements || [])
-        .map(
-          (slug) =>
-            `<img src="https://github.githubassets.com/images/modules/profile/achievements/${esc(slug)}-default.png" alt="${esc(slug.replace(/-/g, " "))}" title="${esc(slug.replace(/-/g, " "))}" loading="lazy">`
-        )
-        .join("");
       const stat = (key, label) =>
         `<div class="stat card reveal"><span class="stat-value" data-gh="${key}">—</span><span class="stat-label">${label}</span></div>`;
       const accent = (window.RESUME.settings?.accent || "#7c5cff").replace("#", "");
@@ -211,15 +205,6 @@ window.Sections = (() => {
               ${stat("repos", "Public repos")}${stat("stars", "Stars earned")}${stat("followers", "Followers")}${stat("years", "Years on GitHub")}
             </div>
           </div>
-
-          ${anchor(
-            `https://github.com/${u}?tab=achievements`,
-            `<span class="gh-ach-icon">${icon("trophy")}</span>
-             <span class="gh-ach-text"><strong>GitHub Achievements</strong><span class="muted">See the badges I've unlocked on GitHub</span></span>
-             ${badges ? `<span class="gh-badges">${badges}</span>` : ""}
-             ${icon("link", "icon gh-ach-arrow")}`,
-            "gh-achievements card reveal"
-          )}
 
           <div class="gh-langs card reveal" hidden>
             <h3>Top languages</h3>

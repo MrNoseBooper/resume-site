@@ -176,10 +176,6 @@ window.RESUME = {
       username: "MrNoseBooper",
       repoCount: 6,             // how many repos to show (0 hides them)
       contributionChart: true,  // contribution heatmap image
-      // GitHub has no API for achievements, so list the ones you've earned by slug.
-      // Examples: "pull-shark", "quickdraw", "yolo", "pair-extraordinaire",
-      //           "starstruck", "galaxy-brain", "arctic-code-vault-contributor"
-      achievements: [],
     },
 
     {

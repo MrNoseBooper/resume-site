@@ -23,7 +23,7 @@ Everything you'll normally change lives in **`js/content.js`**:
 | `timeline` | Work / education / awards with filter buttons and a scroll-drawn line |
 | `skills`   | Animated skill bars (`level: 0–100`) or chips (no level) |
 | `projects` | Project cards with tags, optional image, and links |
-| `github`   | Live GitHub stats, top languages, contribution chart, top repos, achievements link |
+| `github`   | Live GitHub stats, top languages, contribution chart, top repos |
 | `list`     | Generic cards — certifications, awards, publications… |
 | `contact`  | Email button + socials |
 | `custom`   | Any raw HTML you write |
@@ -31,10 +31,6 @@ Everything you'll normally change lives in **`js/content.js`**:
 ### Your photo
 
 Put a square image at `assets/profile.jpg`. Until then, your initials are shown.
-
-### GitHub achievements
-
-GitHub doesn't expose achievements through its API, so list the slugs you've earned in the `github` section's `achievements` array (e.g. `"pull-shark"`, `"quickdraw"`, `"yolo"`) — they'll show as badges next to a link to your achievements tab.
 
 ## Adding a brand-new section type
 
