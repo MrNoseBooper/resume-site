@@ -24,17 +24,17 @@ window.RESUME = {
     // Drop your photo at assets/profile.jpg (square works best).
     // If the file is missing, your initials are shown instead.
     photo: "assets/profile.jpg",
-    roles: ["Software Engineering Student", "Problem Solver", "IT Support"], // cycled in the hero
+    roles: ["Software Engineering Graduand", "Full-Stack Web Developer", "IT Support"], // cycled in the hero
     tagline:
-      "Software Engineering student acquiring skills in coding, problem solving and the development of efficient software solutions.",
-    location: "Kota Kemuning, KL",
-    email: "christopherfoo3000@gmail.com",
+      "Software Engineering Graduand acquiring skills in coding, problem solving and the development of efficient software solutions.",
+    location: "Kota Kemuning, Selangor",
+    email: "christopherfoochiakeith@gmail.com",
     phone: "", // e.g. "+60 13 340 1792" — shown in the Contact section when set (this site is public!)
     resumePdf: "", // e.g. "assets/resume.pdf" — shows a download button when set
     socials: [
       { label: "GitHub",   url: "https://github.com/MrNoseBooper", icon: "github" },
       { label: "LinkedIn", url: "",                                icon: "linkedin" }, // empty url = hidden
-      { label: "Email",    url: "mailto:christopherfoo3000@gmail.com", icon: "mail" },
+      { label: "Email",    url: "mailto:christopherfoochiakeith@gmail.com", icon: "mail" },
     ],
   },
 
@@ -46,20 +46,20 @@ window.RESUME = {
       id: "about",
       title: "About Me",
       paragraphs: [
-        "I'm a Software Engineering student at Sunway University, acquiring skills in coding, problem solving and the development of efficient software solutions. I'm currently looking to gain experience working retail for a tech company during my studies.",
-        "My goal is to gain hands-on experience in the workforce, understand the inner workings of a functioning business, learn how it's managed, and integrate myself as part of the team.",
+        "I'm a Software Engineering Graduand from Sunway University, acquiring skills in coding, problem solving and the development of efficient software solutions. I'm currently looking to gain experience working for a company to further develop my skill set and knowledge base.",
+        "My goal is to gain hands-on experience in the workforce, gain insight into the inner workings of a functioning business, learn how to manage it, and integrate myself as part of the team.",
       ],
-      interests: ["Golfing", "Video Games", "Lawn Care", "Badminton"],
+      interests: ["Brazilian Jiu-Jitsu", "Golfing", "Guitar", "Video Games", "Lawn Care", "Badminton"],
       facts: [
-        { label: "Based in", value: "Kota Kemuning, KL" },
-        { label: "Studying", value: "B. Software Engineering" },
+        { label: "Based in", value: "Kota Kemuning, Selangor" },
+        { label: "Degree", value: "B. Software Engineering (Hons)" },
         { label: "University", value: "Sunway University" },
-        { label: "Languages", value: "English, Mandarin" },
+        { label: "Languages", value: "English (Fluent), Mandarin (Semi-Fluent), Russian (Basic)" },
       ],
       // `decimals` sets how many decimal places the counter shows
       highlights: [
-        { value: 3.5, decimals: 2, label: "CGPA" },
-        { value: 2, label: "Languages spoken" },
+        { value: 3.27, decimals: 2, label: "CGPA" },
+        { value: 3, label: "Languages spoken" },
       ],
     },
 
@@ -72,6 +72,14 @@ window.RESUME = {
       // Optional fields: `points` (bullet list), `description`, `tags`, `location`
       items: [
         {
+          kind: "education",
+          date: "2023 — 2026",
+          title: "Bachelor of Software Engineering (Hons)",
+          org: "Sunway University",
+          location: "Subang Jaya",
+          description: "CGPA 3.27",
+        },
+        {
           kind: "award",
           date: "Feb 2025 — Apr 2025",
           title: "Dean's List Award",
@@ -81,21 +89,18 @@ window.RESUME = {
           kind: "work",
           date: "2024 — Present",
           title: "IT Support",
-          org: "B2B Company",
-        },
-        {
-          kind: "education",
-          date: "2023 — Present",
-          title: "Bachelor of Software Engineering",
-          org: "Sunway University",
-          location: "Subang Jaya",
-          description: "CGPA 3.50",
-        },
-        {
-          kind: "work",
-          date: "2023",
-          title: "Part-Time Waiter",
-          org: "Rakuzen",
+          org: "Popular Meadows Sdn Bhd",
+          points: [
+            "Developed and maintained an internal web-based system to improve business efficiency and digitise manual processes.",
+            "Designed and developed web applications using HTML, CSS, JavaScript, Python, Flask, and SQL/MySQL.",
+            "Deployed and hosted the web application using cPanel, including application configuration and troubleshooting.",
+            "Developed a price-checking system to help staff verify product pricing and improve data accuracy from the B2B system.",
+            "Gathered requirements from company staff and translated business needs into practical system features and improvements.",
+            "Performed system maintenance, debugging, and feature enhancements based on user feedback.",
+            "Installed and configured a UGREEN NAS to improve digital document storage, organisation, and retrieval while reducing reliance on physical documents.",
+            "Contributed to the company's digitalisation and paper-reduction efforts, supporting its sustainability goals (SDG).",
+          ],
+          tags: ["Python", "Flask", "MySQL", "JavaScript", "cPanel", "NAS"],
         },
         {
           kind: "education",
@@ -121,14 +126,24 @@ window.RESUME = {
       // Give a skill a `level` (0–100) to show an animated bar; omit it to show a chip.
       groups: [
         {
-          name: "Technical Skills",
-          items: [{ name: "Java" }, { name: "Python" }, { name: "HTML" }],
+          name: "Programming Languages",
+          items: [
+            { name: "Java" }, { name: "Python" }, { name: "JavaScript" },
+            { name: "HTML" }, { name: "CSS" }, { name: "SQL" }, { name: "Dart" },
+          ],
+        },
+        {
+          name: "Frameworks & Tools",
+          items: [
+            { name: "Flask" }, { name: "MySQL" }, { name: "Firebase Firestore" },
+            { name: "cPanel" }, { name: "Vercel" }, { name: "UGREEN NAS" },
+          ],
         },
         {
           name: "Soft Skills",
           items: [
             { name: "Time Management" },
-            { name: "Problem-solving" },
+            { name: "Problem-Solving" },
             { name: "Adaptability" },
             { name: "Customer Service" },
             { name: "Persuasion" },
@@ -145,25 +160,43 @@ window.RESUME = {
       title: "Projects",
       items: [
         {
-          title: "WMS 1.0",
+          title: "pmmy-systems",
           description:
-            "An application integrated with a database and user verification, built to support the economic development of the indigenous people of Malaysia.",
-          tags: ["Database", "User Verification"],
+            "A full-stack internal business management web application that digitises and streamlines company processes, including product price management, purchase order generation, receiving note verification, and product analysis. Features database-driven workflows, automated document generation, and data validation to reduce manual work, improve data accuracy, and increase operational efficiency.",
+          tags: ["Python", "Flask", "MySQL", "HTML", "CSS", "JavaScript", "cPanel"],
           links: [],
         },
         {
-          title: "Un-Named (Ongoing)",
+          title: "skill_share_platform",
           description:
-            "A web application that reads, stores and processes company documents to improve staff efficiency and reduce cost.",
-          tags: ["Web App", "Document Processing"],
+            "A \"Neighbourhood Skill-Share Platform\" built as a group project for SWE3025 (Code Camp). Users can create an account, sign in, set up and join classes, report other users, and communicate through messaging or a notice board.",
+          tags: ["Dart", "Firebase Firestore", "Group Project"],
+          links: [{ label: "Code", url: "https://github.com/MrNoseBooper/skill_share_platform" }],
+        },
+        {
+          title: "Capstone-2",
+          description:
+            "Capstone project for PRJ3223: a Python program that compares the outputs of 4 different machine learning models in predicting sepsis in a home setting before it occurs, analysing the strengths and shortcomings of each model.",
+          tags: ["Python", "Machine Learning"],
+          links: [{ label: "Code", url: "https://github.com/MrNoseBooper/Capstone-2" }],
+        },
+        {
+          title: "personal-website",
+          description:
+            "A multi-purpose personal website built to do anything I'd like it to — completing tasks, playing games, hosting servers and more. I designed how each component should function and used AI to implement them for rapid development.",
+          tags: ["Vercel", "Firebase Firestore", "AI-Assisted"],
           links: [],
         },
         {
-          title: "Resume Website",
-          description: "This site — a config-driven, animated personal resume.",
-          tags: ["HTML", "CSS", "JavaScript"],
+          title: "resume-site",
+          description:
+            "This website — built to present my resume better. I guided the build and designed its architecture, with AI writing the code.",
+          tags: ["HTML", "CSS", "JavaScript", "Vercel"],
           image: "", // optional, e.g. "assets/projects/resume.png"
-          links: [{ label: "Code", url: "https://github.com/MrNoseBooper" }],
+          links: [
+            { label: "Live", url: "https://resume-site-chi-navy.vercel.app/" },
+            { label: "Code", url: "https://github.com/MrNoseBooper/resume-site" },
+          ],
         },
       ],
     },
@@ -200,7 +233,7 @@ window.RESUME = {
       type: "contact",
       id: "contact",
       title: "Get In Touch",
-      message: "I'm looking for opportunities to gain hands-on experience, especially working with a tech company during my studies. Drop me a message and I'll get back to you.",
+      message: "I’m looking to gain experience working for a company to further develop my skill set and knowledge base. Drop me a message and I’ll get back to you.",
     },
   ],
 };
