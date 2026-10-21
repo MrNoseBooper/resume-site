@@ -256,17 +256,6 @@ a.card:hover { border-color: var(--text); }
 .stat-label { font: 500 0.72rem var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 
 /* ============================== timeline ============================== */
-.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
-.chip {
-  padding: 6px 14px; border-radius: 999px;
-  border: 1px solid var(--border); background: transparent;
-  font: 500 0.78rem var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em;
-  color: var(--muted);
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
-}
-.chip:hover { border-color: var(--text); color: var(--text); }
-.chip.is-active { background: var(--text); border-color: var(--text); color: var(--bg); }
-
 .timeline { position: relative; list-style: none; margin: 0; padding: 0; --progress: 0; }
 .timeline::before, .tl-line {
   content: ""; position: absolute; top: 0; bottom: 0; left: 200px; width: 1px;
@@ -275,7 +264,6 @@ a.card:hover { border-color: var(--text); }
 .tl-line { width: 2px; translate: -0.5px 0; background: var(--accent); transform-origin: top; transform: scaleY(var(--progress)); }
 
 .tl-item { position: relative; display: grid; grid-template-columns: 200px 1fr; padding-bottom: 36px; }
-.tl-item.is-hidden { display: none; }
 .tl-when { padding: 22px 32px 0 0; display: grid; gap: 6px; align-content: start; }
 .tl-date { font: 500 0.82rem var(--font-mono); color: var(--text); }
 .tl-kind {

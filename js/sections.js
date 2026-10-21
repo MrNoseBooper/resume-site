@@ -114,14 +114,6 @@ window.Sections = (() => {
 
     timeline(s) {
       const items = s.items || [];
-      const kinds = [...new Set(items.map((it) => it.kind).filter(Boolean))];
-      const filters =
-        kinds.length > 1
-          ? `<div class="filters reveal" role="group" aria-label="Filter timeline">
-              <button class="chip is-active" data-filter="all">All</button>
-              ${kinds.map((k) => `<button class="chip" data-filter="${esc(k)}">${esc(k)}</button>`).join("")}
-            </div>`
-          : "";
       const list = items
         .map((it, i) => {
           const body = it.points
@@ -146,7 +138,7 @@ window.Sections = (() => {
             </li>`;
         })
         .join("");
-      return `${filters}<ol class="timeline"><span class="tl-line" aria-hidden="true"></span>${list}</ol>`;
+      return `<ol class="timeline"><span class="tl-line" aria-hidden="true"></span>${list}</ol>`;
     },
 
     skills(s) {

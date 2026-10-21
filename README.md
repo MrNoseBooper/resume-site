@@ -20,7 +20,7 @@ Everything you'll normally change lives in **`js/content.js`**:
 |------------|---------------|
 | `hero`     | Name, typed roles, photo, call-to-action buttons |
 | `about`    | Intro paragraphs, quick facts, animated counters |
-| `timeline` | Work / education / awards with filter buttons and a scroll-drawn line |
+| `timeline` | Work / education / awards with a scroll-drawn line |
 | `skills`   | Animated skill bars (`level: 0–100`) or chips (no level) |
 | `projects` | Project cards with tags, optional image, and links |
 | `github`   | Live GitHub stats, top languages, contribution chart, top repos |

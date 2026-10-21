@@ -137,19 +137,6 @@
     setTimeout(step, 900);
   });
 
-  /* ---------- timeline filters ---------- */
-  document.querySelectorAll(".filters").forEach((group) => {
-    const items = group.parentElement.querySelectorAll(".tl-item");
-    group.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-filter]");
-      if (!btn) return;
-      group.querySelectorAll(".chip").forEach((c) => c.classList.toggle("is-active", c === btn));
-      const f = btn.dataset.filter;
-      items.forEach((it) => it.classList.toggle("is-hidden", f !== "all" && it.dataset.kind !== f));
-      updateScroll();
-    });
-  });
-
   /* ---------- scroll-driven: progress bar, nav, timeline line ---------- */
   const progress = document.getElementById("progress");
   const header = document.querySelector(".site-header");

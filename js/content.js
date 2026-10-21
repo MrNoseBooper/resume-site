@@ -71,7 +71,7 @@ window.RESUME = {
       id: "timeline",
       title: "Timeline",
       subtitle: "Where I've been and what I've done.",
-      // `kind` controls the icon and the filter buttons: work, education, award, project, volunteer
+      // `kind` controls the icon and label: work, education, award, project, volunteer
       // Optional fields: `points` (bullet list), `description`, `tags`, `location`
       items: [
         {
