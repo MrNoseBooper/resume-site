@@ -10,8 +10,12 @@
 
   /* ---------- theme colours from settings ---------- */
   const root = document.documentElement;
-  if (settings.accent) root.style.setProperty("--accent", settings.accent);
-  if (settings.accent2) root.style.setProperty("--accent-2", settings.accent2);
+  // Overrides the accent per theme (both are optional; css/style.css holds the defaults).
+  const accentCss = [
+    settings.accent && `:root{--accent:${settings.accent}}`,
+    settings.accentDark && `:root[data-theme="dark"]{--accent:${settings.accentDark}}`,
+  ].filter(Boolean).join("");
+  if (accentCss) document.head.insertAdjacentHTML("beforeend", `<style>${accentCss}</style>`);
 
   /* ---------- render sections ---------- */
   const active = sections.filter((s) => s.enabled !== false && renderers[s.type]);
@@ -78,7 +82,6 @@
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add("is-visible");
-        setTimeout(() => entry.target.classList.add("is-settled"), 1300);
         entry.target.querySelectorAll("[data-count]").forEach(countUp);
         revealObserver.unobserve(entry.target);
       });
@@ -105,33 +108,11 @@
     requestAnimationFrame(tick);
   }
 
-  /* ---------- 3D tilt on cards ---------- */
-  function bindTilt(scope) {
-    if (reduceMotion || !window.matchMedia("(pointer: fine)").matches) return;
-    scope.querySelectorAll(".tilt:not([data-tilt])").forEach((card) => {
-      card.dataset.tilt = "1";
-      card.addEventListener("pointermove", (e) => {
-        const r = card.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        card.style.setProperty("--rx", `${-y * 6}deg`);
-        card.style.setProperty("--ry", `${x * 6}deg`);
-        card.style.setProperty("--mx", `${(x + 0.5) * 100}%`);
-        card.style.setProperty("--my", `${(y + 0.5) * 100}%`);
-      });
-      card.addEventListener("pointerleave", () => {
-        card.style.setProperty("--rx", "0deg");
-        card.style.setProperty("--ry", "0deg");
-      });
-    });
-  }
-
   // Call after injecting new markup (e.g. data loaded from an API).
   function refresh(scope = document) {
     scope.querySelectorAll(".reveal:not(.is-visible)").forEach((el) => revealObserver.observe(el));
     // counters that were injected into an already-visible element
     scope.querySelectorAll(".is-visible [data-count], [data-count].is-visible").forEach(countUp);
-    bindTilt(scope);
   }
   refresh();
 

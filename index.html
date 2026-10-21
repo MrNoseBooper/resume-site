@@ -13,21 +13,20 @@
     (function () {
       var t;
       try { t = localStorage.getItem("theme"); } catch (e) {}
-      if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       document.documentElement.dataset.theme = t;
     })();
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css"> <!-- Link to CSS -->
 </head>
 
 <!-- Body -->
 <body>
   <div id="progress" class="progress" aria-hidden="true"></div>
-  <div class="bg" aria-hidden="true"><span></span><span></span><span></span></div>
 
   <header class="site-header">
     <nav class="container nav" aria-label="Main">

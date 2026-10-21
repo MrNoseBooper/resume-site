@@ -12,7 +12,7 @@ Everything you'll normally change lives in **`js/content.js`**:
   - **Hide**: set `enabled: false` (or delete the entry).
   - **Add**: copy an entry, give it a unique `id`, and fill it in.
   - **Keep out of the nav**: `nav: false`. Shorter nav text: `navLabel: "..."`.
-- **`settings`** — accent colours.
+- **`settings`** — optional accent colour overrides (light / dark). The base palette lives at the top of `css/style.css`.
 
 ### Section types
 
@@ -38,7 +38,7 @@ Put a square image at `assets/profile.jpg`. Until then, your initials are shown.
 2. (Optional) add an `init` hook in the same file for behaviour that runs after render.
 3. Use it in `content.js` with `type: "yourType"`.
 
-Add `class="reveal"` to any element to make it fade in on scroll, `style="--i:N"` to stagger it, and `class="card tilt"` for the hover-tilt card style.
+Add `class="reveal"` to any element to make it fade in on scroll, `style="--i:N"` to stagger it, and `class="card"` for the bordered card style.
 
 ## Running locally
 

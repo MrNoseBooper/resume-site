@@ -14,8 +14,10 @@
 
 window.RESUME = {
   settings: {
-    accent: "#7c5cff",   // main brand colour
-    accent2: "#22d3ee",  // secondary colour used in gradients
+    // Optional accent overrides, e.g. "#b4441c". Leave empty to use the
+    // defaults in css/style.css (rust on paper / light rust on charcoal).
+    accent: "",
+    accentDark: "",
   },
 
   profile: {
@@ -27,6 +29,7 @@ window.RESUME = {
     roles: ["Software Engineering Graduand", "Full-Stack Web Developer", "IT Support"], // cycled in the hero
     tagline:
       "Software Engineering Graduand acquiring skills in coding, problem solving and the development of efficient software solutions.",
+    availability: "Open to opportunities", // small line above the name in the hero
     location: "Kota Kemuning, Selangor",
     email: "christopherfoochiakeith@gmail.com",
     phone: "", // e.g. "+60 13 340 1792" — shown in the Contact section when set (this site is public!)
@@ -158,12 +161,22 @@ window.RESUME = {
       type: "projects",
       id: "projects",
       title: "Projects",
+      // Optional `status` shows a small live badge, e.g. "On-going".
       items: [
         {
           title: "pmmy-systems",
+          status: "On-going",
           description:
             "A full-stack internal business management web application that digitises and streamlines company processes, including product price management, purchase order generation, receiving note verification, and product analysis. Features database-driven workflows, automated document generation, and data validation to reduce manual work, improve data accuracy, and increase operational efficiency.",
           tags: ["Python", "Flask", "MySQL", "HTML", "CSS", "JavaScript", "cPanel"],
+          links: [],
+        },
+        {
+          title: "personal-website",
+          status: "On-going",
+          description:
+            "A multi-purpose personal website built to do anything I'd like it to — completing tasks, playing games, hosting servers and more. Hosted on Vercel's hobby plan with Firestore for data. I designed how each component should function and used AI to implement them for rapid development.",
+          tags: ["Vercel", "Firebase Firestore", "AI-Assisted"],
           links: [],
         },
         {
@@ -181,13 +194,6 @@ window.RESUME = {
           links: [{ label: "Code", url: "https://github.com/MrNoseBooper/Capstone-2" }],
         },
         {
-          title: "personal-website",
-          description:
-            "A multi-purpose personal website built to do anything I'd like it to — completing tasks, playing games, hosting servers and more. I designed how each component should function and used AI to implement them for rapid development.",
-          tags: ["Vercel", "Firebase Firestore", "AI-Assisted"],
-          links: [],
-        },
-        {
           title: "resume-site",
           description:
             "This website — built to present my resume better. I guided the build and designed its architecture, with AI writing the code.",
@@ -197,6 +203,13 @@ window.RESUME = {
             { label: "Live", url: "https://resume-site-chi-navy.vercel.app/" },
             { label: "Code", url: "https://github.com/MrNoseBooper/resume-site" },
           ],
+        },
+        {
+          title: "Boqkova-website",
+          description:
+            "A static website with no backend logic for a friend to advertise their language tutoring classes, with the potential to sell cheaper courses in the long term.",
+          tags: ["HTML", "CSS", "JavaScript", "Static Site"],
+          links: [],
         },
       ],
     },
@@ -233,6 +246,7 @@ window.RESUME = {
       type: "contact",
       id: "contact",
       title: "Get In Touch",
+      headline: "Let's talk",
       message: "I’m looking to gain experience working for a company to further develop my skill set and knowledge base. Drop me a message and I’ll get back to you.",
     },
   ],

@@ -26,6 +26,7 @@ window.Sections = (() => {
     trophy: '<path d="M6 9H4a2 2 0 0 1 0-4h2M18 9h2a2 2 0 0 0 0-4h-2M4 22h16M10 14.7V17c0 .6-.5 1-1 1.2-1.2.5-2 2-2 3.8M14 14.7V17c0 .6.5 1 1 1.2 1.2.5 2 2 2 3.8M18 2H6v7a6 6 0 0 0 12 0z"/>',
     pin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
     arrow: '<path d="M12 5v14M19 12l-7 7-7-7"/>',
+    phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
   };
 
   const icon = (name, cls = "icon") =>
@@ -57,10 +58,12 @@ window.Sections = (() => {
       const resume = p.resumePdf
         ? anchor(p.resumePdf, `${icon("file")} Download CV`, "btn btn-ghost")
         : "";
+      // anything in fullName after the short name is set on its own line, e.g. "Chia Keith"
+      const rest = p.fullName?.startsWith(p.name) ? p.fullName.slice(p.name.length).trim() : "";
       return `
         <div class="hero-text">
-          <p class="hero-hello reveal">Hello, I'm</p>
-          <h1 class="hero-name reveal" style="--i:1">${esc(p.name)}</h1>
+          <p class="hero-hello reveal">${esc(p.availability || "Hello, I'm")}</p>
+          <h1 class="hero-name reveal" style="--i:1">${esc(p.name)}${rest ? ` <em>${esc(rest)}</em>` : ""}</h1>
           <p class="hero-role reveal" style="--i:2">
             <span class="typed" data-words="${esc(JSON.stringify(p.roles || []))}"></span><span class="caret" aria-hidden="true"></span>
           </p>
@@ -129,9 +132,12 @@ window.Sections = (() => {
           const org = [it.org, it.location].filter(Boolean).map(esc).join(" · ");
           return `
             <li class="tl-item reveal" data-kind="${esc(it.kind || "")}" style="--i:${i % 3}">
-              <span class="tl-dot">${icon(it.kind || "work")}</span>
-              <article class="tl-card card tilt">
+              <div class="tl-when">
                 <span class="tl-date">${esc(it.date)}</span>
+                ${it.kind ? `<span class="tl-kind">${icon(it.kind)} ${esc(it.kind)}</span>` : ""}
+              </div>
+              <span class="tl-dot" aria-hidden="true"></span>
+              <article class="tl-card card">
                 <h3>${esc(it.title)}</h3>
                 ${org ? `<p class="tl-org">${org}</p>` : ""}
                 ${body}
@@ -167,14 +173,18 @@ window.Sections = (() => {
     },
 
     projects(s) {
-      return `<div class="card-grid">${(s.items || [])
+      return `<div class="projects-list">${(s.items || [])
         .map((p, i) => {
           const links = (p.links || [])
             .filter((l) => l.url)
             .map((l) => anchor(l.url, `${esc(l.label)} ${icon("link")}`, "text-link"))
             .join("");
           return `
-            <article class="project card tilt reveal" style="--i:${i % 3}">
+            <article class="project reveal" style="--i:${i % 2}">
+              <div class="project-top">
+                <span class="project-num">${String(i + 1).padStart(2, "0")}</span>
+                ${p.status ? `<span class="status">${esc(p.status)}</span>` : ""}
+              </div>
               ${p.image ? `<div class="project-img"><img src="${esc(p.image)}" alt="" loading="lazy"></div>` : ""}
               <h3>${esc(p.title)}</h3>
               <p>${esc(p.description)}</p>
@@ -189,7 +199,7 @@ window.Sections = (() => {
       const u = esc(s.username);
       const stat = (key, label) =>
         `<div class="stat card reveal"><span class="stat-value" data-gh="${key}">—</span><span class="stat-label">${label}</span></div>`;
-      const accent = (window.RESUME.settings?.accent || "#7c5cff").replace("#", "");
+      const accent = (window.RESUME.settings?.accent || "#b4441c").replace("#", "");
       return `
         <div class="gh">
           <div class="gh-top">
@@ -235,8 +245,8 @@ window.Sections = (() => {
             ${it.subtitle ? `<p class="tl-org">${esc(it.subtitle)}</p>` : ""}
             ${it.description ? `<p>${esc(it.description)}</p>` : ""}`;
           return it.url
-            ? anchor(it.url, inner, "card tilt reveal list-card", `style="--i:${i % 3}"`)
-            : `<div class="card tilt reveal list-card" style="--i:${i % 3}">${inner}</div>`;
+            ? anchor(it.url, inner, "card reveal list-card", `style="--i:${i % 3}"`)
+            : `<div class="card reveal list-card" style="--i:${i % 3}">${inner}</div>`;
         })
         .join("")}</div>`;
     },
@@ -244,10 +254,15 @@ window.Sections = (() => {
     contact(s, p) {
       return `
         <div class="contact card reveal">
-          <p class="contact-msg">${esc(s.message)}</p>
-          ${p.phone ? anchor(`tel:${p.phone.replace(/[^\d+]/g, "")}`, esc(p.phone), "text-link") : ""}
-          ${p.email ? anchor(`mailto:${p.email}`, `${icon("mail")} ${esc(p.email)}`, "btn btn-primary btn-lg") : ""}
-          <div class="socials">${socialLinks(p)}</div>
+          <div>
+            <p class="contact-title">${esc(s.headline || "Let's talk")}<span>.</span></p>
+            <p class="contact-msg">${esc(s.message)}</p>
+          </div>
+          <div class="contact-actions">
+            ${p.email ? anchor(`mailto:${p.email}`, `${icon("mail")} ${esc(p.email)}`, "contact-line") : ""}
+            ${p.phone ? anchor(`tel:${p.phone.replace(/[^\d+]/g, "")}`, `${icon("phone")} ${esc(p.phone)}`, "contact-line") : ""}
+            <div class="socials">${socialLinks(p)}</div>
+          </div>
         </div>`;
     },
 
@@ -341,7 +356,7 @@ window.Sections = (() => {
                      <span>${icon("star")} ${r.stargazers_count}</span>
                      <span>${icon("fork")} ${r.forks_count}</span>
                    </div>`,
-                  "repo card tilt reveal",
+                  "repo card reveal",
                   `style="--i:${i % 3}"`
                 )
             )
